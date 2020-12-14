@@ -1,0 +1,47 @@
+package biblioteka;
+
+import java.util.*;
+
+public class Main {
+
+    private static Object Ksiazka;
+    private static HashMap<Integer, Object> spisKsiazek;
+
+    public static void main(String[] args) {
+
+        HashMap<Integer, Object> spisKsiazek = new HashMap<>();
+        Ksiazka<String, String, Boolean> TysiacDziewiecsetOsiemdziesiatyCzwarty = new Ksiazka<>("1984", "G.Orwell", true);
+        spisKsiazek.put(1, TysiacDziewiecsetOsiemdziesiatyCzwarty);
+
+        System.out.println("Co chcesz zrobic? \n Wcisnij 'd' zeby dodac ksiazke \n Wcisnij 's' zeby zobaczyc spis \n Wcisnij 'w' zeby wypozyczyc");
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.next();
+        if (userInput.equals("d")) {
+            dodajKsiazke();
+        }
+        if (userInput.equals("s")) {
+            System.out.println(spisKsiazek.values());
+        }
+        if(userInput.equals("w")){
+            wypozycz();
+        }
+            //Ksiazka<String,String,Boolean> TysiacDziewiecsetOsiemdziesiatyCzwarty = new Ksiazka<>("1984", "G.Orwell",true);
+            // Ksiazka<String, String,Boolean> HarryPotter = new Ksiazka<>("Harru Potter", "J.K.Rowling",false);
+            // Ksiazka<String, String,Boolean> ZbrodniaIKara = new Ksiazka<>("Zbrodnia i Kara", "F.Dostojewski",false);
+        }
+        public static void dodajKsiazke () {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Podaj tytul:");
+            String nowyTytul = scanner.next();
+            System.out.println("Podaj autora:");
+            String nowyAutor = scanner.next();
+            Ksiazka<String, String, Boolean> NowaKsiazka = new Ksiazka<>(nowyTytul, nowyAutor, false);
+            int index = spisKsiazek.size() +1;
+            spisKsiazek.put(index, NowaKsiazka);
+        }
+        public static void wypozycz () {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("podaj index");
+            int index = scanner.nextInt();
+        }
+    }
