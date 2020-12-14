@@ -1,0 +1,15 @@
+package biblioteka;
+
+public class Ksiazka<tytul, autor,status>{
+
+    tytul tytulKsiazki;
+    autor autorKsiazki;
+    status status;
+
+    public Ksiazka(tytul tytulKsiazki, autor autorKsiazki,status wypozyczona){
+        this.tytulKsiazki = tytulKsiazki;
+        this.autorKsiazki = autorKsiazki;
+        this.status = wypozyczona;
+    }
+
+}
