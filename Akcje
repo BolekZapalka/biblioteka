@@ -1,0 +1,40 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Akcje {
+    static HashMap<Integer,Object> spisKsiazek = new HashMap<>();
+    public static void dodajKsiazke(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("podaj tytul");
+        String nowyTytul = scanner.next();
+        System.out.println("podaj autora");
+        String nowyAutor = scanner.next();
+        int index = spisKsiazek.size() +1;
+        //tworzy obikekt
+        Ksiazka ksiazka = new Ksiazka(nowyTytul,nowyAutor,false);
+        //dodaje obiekt do mapy
+        spisKsiazek.put(index,ksiazka);
+        System.out.println(nowyTytul + " " + nowyAutor + " " + "dodany");
+    }
+    public static void wypozycz(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Oto lista ksiazek: ");
+        //jak wydrukowac wczystkie pola ksiazki
+        System.out.println(spisKsiazek.toString());
+        System.out.println("Podaj index ksiazki do wypozyczenia");
+        int index = scanner.nextInt();
+        //spisKsiazek.get(index);
+        //jak zmienic boolean czy Wypozyczona?
+        spisKsiazek.replace(index,false,true);
+        System.out.println(spisKsiazek.entrySet());
+
+    }
+
+    public static void usun(){
+        System.out.println("podaj index ksiazki do usuniecia");
+        Scanner scanner = new Scanner(System.in);
+        int index = scanner.nextInt();
+        spisKsiazek.remove(index);
+
+    }
+}
