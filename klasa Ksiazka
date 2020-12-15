@@ -1,15 +1,36 @@
-package biblioteka;
+public class Ksiazka {
+    String tytul;
+    String autor;
+    Boolean wypozyczona;
+    //konstruktor ksiazki:
+    public Ksiazka(String nowyTytul,String nowyAutor,Boolean czyWypozyczona){
+    autor = nowyAutor;
+    tytul = nowyTytul;
+    wypozyczona = czyWypozyczona;
+    }
+    //metody ksiazki, na chuj mi one? nie wiem
 
-public class Ksiazka<tytul, autor,status>{
-
-    tytul tytulKsiazki;
-    autor autorKsiazki;
-    status status;
-
-    public Ksiazka(tytul tytulKsiazki, autor autorKsiazki,status wypozyczona){
-        this.tytulKsiazki = tytulKsiazki;
-        this.autorKsiazki = autorKsiazki;
-        this.status = wypozyczona;
+    public String getTytul() {
+        return tytul;
     }
 
+    public void setTytul(String tytul) {
+        this.tytul = tytul;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public Boolean getWypozyczona() {
+        return wypozyczona;
+    }
+
+    public void setWypozyczona(Boolean wypozyczona) {
+        this.wypozyczona = wypozyczona;
+    }
 }
