@@ -16,17 +16,17 @@ public class Akcje {
         spisKsiazek.put(index,ksiazka);
         System.out.println(nowyTytul + " " + nowyAutor + " " + "dodany");
     }
-    public static void wypozycz(){
-        Scanner scanner = new Scanner(System.in);
+   public static void wypozycz() {
+
         System.out.println("Oto lista ksiazek: ");
-        //jak wydrukowac wczystkie pola ksiazki
-        System.out.println(spisKsiazek.toString());
+        podajSpis();
+
         System.out.println("Podaj index ksiazki do wypozyczenia");
         int index = scanner.nextInt();
-        //spisKsiazek.get(index);
-        //jak zmienic boolean czy Wypozyczona?
-        spisKsiazek.replace(index,false,true);
-        System.out.println(spisKsiazek.entrySet());
+        System.out.println(spisKsiazek.get(index));
+        spisKsiazek.get(index).s
+
+    }
 
     }
 
