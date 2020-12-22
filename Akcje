@@ -1,22 +1,32 @@
+import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Akcje {
-    static HashMap<Integer,Object> spisKsiazek = new HashMap<>();
-    public static void dodajKsiazke(){
-        Scanner scanner = new Scanner(System.in);
+    static HashMap<Integer, Object> spisKsiazek = new HashMap<>();
+    static Scanner scanner = new Scanner(System.in);
+    private static Object Ksiazka;
+    static Ksiazka chuj = new Ksiazka("sraka", "dziwka", true);
+
+
+    public static void dodajKsiazke() {
+        spisKsiazek.put(1, chuj);
         System.out.println("podaj tytul");
         String nowyTytul = scanner.next();
         System.out.println("podaj autora");
         String nowyAutor = scanner.next();
-        int index = spisKsiazek.size() +1;
+        int index = spisKsiazek.size() + 1;
         //tworzy obikekt
-        Ksiazka ksiazka = new Ksiazka(nowyTytul,nowyAutor,false);
+        Ksiazka ksiazka = new Ksiazka(nowyTytul, nowyAutor, false);
         //dodaje obiekt do mapy
-        spisKsiazek.put(index,ksiazka);
+        spisKsiazek.put(index, ksiazka);
         System.out.println(nowyTytul + " " + nowyAutor + " " + "dodany");
+
     }
-   public static void wypozycz() {
+
+    public static void wypozycz() {
 
         System.out.println("Oto lista ksiazek: ");
         podajSpis();
@@ -24,17 +34,26 @@ public class Akcje {
         System.out.println("Podaj index ksiazki do wypozyczenia");
         int index = scanner.nextInt();
         System.out.println(spisKsiazek.get(index));
-        spisKsiazek.get(index).s
+
 
     }
 
-    }
+    public static void usun() {
 
-    public static void usun(){
         System.out.println("podaj index ksiazki do usuniecia");
-        Scanner scanner = new Scanner(System.in);
         int index = scanner.nextInt();
         spisKsiazek.remove(index);
 
     }
+
+    public static void podajSpis() {
+
+        System.out.println("Takie mamy ksiazki: ");
+        for (Map.Entry<Integer, Object> entry : spisKsiazek.entrySet()) {
+            int i = entry.getKey();
+            Object k = entry.getValue();
+            System.out.println(i + " " + k);
+        }
+    }
 }
+
