@@ -2,13 +2,14 @@ public class Ksiazka {
     String tytul;
     String autor;
     Boolean wypozyczona;
+
     //konstruktor ksiazki:
-    public Ksiazka(String nowyTytul,String nowyAutor,Boolean czyWypozyczona){
-    autor = nowyAutor;
-    tytul = nowyTytul;
-    wypozyczona = czyWypozyczona;
+    public Ksiazka(String nowyTytul, String nowyAutor, Boolean czyWypozyczona) {
+        this.autor = nowyAutor;
+        this.tytul = nowyTytul;
+        this.wypozyczona = czyWypozyczona;
     }
-    //metody ksiazki, na chuj mi one? nie wiem
+    
 
     public String getTytul() {
         return tytul;
@@ -33,4 +34,10 @@ public class Ksiazka {
     public void setWypozyczona(Boolean wypozyczona) {
         this.wypozyczona = wypozyczona;
     }
+
+    @Override
+    public String toString() {
+        return "Ksiazka{" + "tytul: " + tytul + " " + "autor: " + autor + "wypozyczona " + wypozyczona + "}";
+    }
+
 }
