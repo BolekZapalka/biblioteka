@@ -2,9 +2,10 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-    private static Object Ksiazka;
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
     int zakoncz = 0;
+
         do{
             System.out.println("Co chcesz zrobic? \n Wcisnij 'd' zeby dodac ksiazke \n Wcisnij 's' zeby zobaczyc spis \n Wcisnij 'w' zeby wypozyczyc");
         Scanner scanner = new Scanner(System.in);
@@ -13,10 +14,11 @@ public class Main {
            Akcje.dodajKsiazke();
         }
         if (userInput.equals("s")) {
-            System.out.println(Akcje.spisKsiazek.entrySet()); //jakies chujostwo sie drukuje
+            Akcje.podajSpis(); 
         }
         if(userInput.equals("w")){
             Akcje.wypozycz();
+
         }
         if(userInput.equals("q")){
             zakoncz = 1;
