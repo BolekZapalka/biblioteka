@@ -1,14 +1,12 @@
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+
+
 
 public class Akcje {
-    static HashMap<Integer, Object> spisKsiazek = new HashMap<>();
+    static HashMap<Integer, Ksiazka> spisKsiazek = new HashMap<>();
     static Scanner scanner = new Scanner(System.in);
-    private static Object Ksiazka;
-    static Ksiazka chuj = new Ksiazka("sraka", "dziwka", true);
+    static Ksiazka chuj = new Ksiazka("sraka", "dziwka", true, 1);
+    private Object Ksiazka;
 
 
     public static void dodajKsiazke() {
@@ -17,14 +15,30 @@ public class Akcje {
         String nowyTytul = scanner.next();
         System.out.println("podaj autora");
         String nowyAutor = scanner.next();
-        int index = spisKsiazek.size() + 1;
-        //tworzy obikekt
-        Ksiazka ksiazka = new Ksiazka(nowyTytul, nowyAutor, false);
-        //dodaje obiekt do mapy
-        spisKsiazek.put(index, ksiazka);
-        System.out.println(nowyTytul + " " + nowyAutor + " " + "dodany");
+        int ilosc = 0;
+        int i = 1;
+        do {
+            if (spisKsiazek.get(i).getTytul().equals(nowyTytul) && spisKsiazek.get(i).getAutor().equals(nowyAutor)) {
+                ilosc = spisKsiazek.get(i).getliczbaKopii() + 1;
+                spisKsiazek.get(i).setLiczbaKopii(ilosc);
+            }
+            i++;
+        } while (i <= spisKsiazek.size());
+
+        if (ilosc == 0) {
+            int index = spisKsiazek.size() + 1;
+            //tworzy obiekt
+            Ksiazka ksiazka = new Ksiazka(nowyTytul, nowyAutor, false, 1);
+            //dodaje obiekt do mapy
+            spisKsiazek.put(index, ksiazka);
+            System.out.println(nowyTytul + " " + nowyAutor + " " + "dodany");
+        } else {
+            System.out.println(nowyTytul + " " + nowyAutor + " " + "dodany");
+            System.out.println("libcza kopii: " + ilosc);
+        }
 
     }
+
 
     public static void wypozycz() {
 
@@ -33,8 +47,11 @@ public class Akcje {
 
         System.out.println("Podaj index ksiazki do wypozyczenia");
         int index = scanner.nextInt();
-        System.out.println(spisKsiazek.get(index));
-
+        if (spisKsiazek.get(index).getliczbaKopii() == 0) {
+            System.out.println("wszystkie kopie tej ksiazki sa wypozyczone!");
+        } else {
+            spisKsiazek.get(index).setLiczbaKopii(spisKsiazek.get(index).getliczbaKopii() - 1);
+        }
 
     }
 
@@ -43,17 +60,64 @@ public class Akcje {
         System.out.println("podaj index ksiazki do usuniecia");
         int index = scanner.nextInt();
         spisKsiazek.remove(index);
-
     }
 
     public static void podajSpis() {
 
         System.out.println("Takie mamy ksiazki: ");
-        for (Map.Entry<Integer, Object> entry : spisKsiazek.entrySet()) {
+        for (Map.Entry<Integer, Ksiazka> entry : spisKsiazek.entrySet()) {
             int i = entry.getKey();
             Object k = entry.getValue();
             System.out.println(i + " " + k);
+
         }
     }
-}
 
+    public void nowaMetoda() {
+        System.out.println("test");
+    }
+
+    public static void autorAlfabetycznie() {
+
+
+        List<Map.Entry<Integer, Ksiazka>> lista = new ArrayList<>(spisKsiazek.entrySet());
+
+        lista.sort(Comparator.comparing(v -> v.getValue().getAutor()));
+
+        for (Map.Entry<Integer, Ksiazka> integerKsiazkaEntry : lista) {
+            System.out.println(integerKsiazkaEntry);
+        }
+    }
+
+    public static void tytulAlfabetycznie() {
+        List<Map.Entry<Integer, Ksiazka>> lista2 = new ArrayList<>(spisKsiazek.entrySet());
+
+        lista2.sort(Comparator.comparing(p -> p.getValue().getTytul()));
+
+        for (Map.Entry<Integer, Ksiazka> integerKsiazkaEntry : lista2) {
+            System.out.println(integerKsiazkaEntry);
+        }
+    }
+
+    public static void znajdzTytul() {
+        System.out.println("wyszukaj tytul");
+
+        String szukanyTytul = scanner.next();
+        int brak = 0;
+        for (Map.Entry<Integer, Ksiazka> entry : spisKsiazek.entrySet()) {
+            Integer key = entry.getKey();
+            Ksiazka value = entry.getValue();
+            String k = entry.getValue().getTytul();
+
+            if (k.equals(szukanyTytul)) {
+                System.out.println(key + " " + value);
+                brak = brak + 1;
+            }
+        }
+        if (brak == 0){
+        System.out.println("nie mamy takiej ksiazki");
+
+        }
+    }
+
+}
