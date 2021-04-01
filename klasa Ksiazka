@@ -1,15 +1,18 @@
 public class Ksiazka {
+    int liczbaKopii;
     String tytul;
     String autor;
     Boolean wypozyczona;
 
     //konstruktor ksiazki:
-    public Ksiazka(String nowyTytul, String nowyAutor, Boolean czyWypozyczona) {
-        this.autor = nowyAutor;
-        this.tytul = nowyTytul;
-        this.wypozyczona = czyWypozyczona;
+    public Ksiazka(String nowyTytul, String nowyAutor, Boolean czyWypozyczona, int liczbaKopii) {
+        autor = nowyAutor;
+        tytul = nowyTytul;
+        wypozyczona = czyWypozyczona;
+        this.liczbaKopii = liczbaKopii;
     }
-    
+
+
 
     public String getTytul() {
         return tytul;
@@ -35,9 +38,18 @@ public class Ksiazka {
         this.wypozyczona = wypozyczona;
     }
 
+    public int getliczbaKopii() { return liczbaKopii; }
+
+    public void setLiczbaKopii(int liczbaKopii) { this.liczbaKopii = liczbaKopii; }
+
     @Override
     public String toString() {
-        return "Ksiazka{" + "tytul: " + tytul + " " + "autor: " + autor + "wypozyczona " + wypozyczona + "}";
-    }
+        return "Ksiazka{" +
 
+                " tytul='" + tytul + '\'' +
+                ", autor='" + autor + '\'' +
+                ", wypozyczona=" + wypozyczona +
+                ", liczbaKopii=" + liczbaKopii +
+                '}';
+    }
 }
