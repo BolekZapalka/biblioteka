@@ -3,29 +3,39 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
-    int zakoncz = 0;
+    public static void main(String[] args) {
+        int zakoncz = 0;
+        Akcje dupa = new Akcje();
+        do {
+            System.out.println("Co chcesz zrobic? \n Wcisnij 'd' zeby dodac ksiazke \n Wcisnij 's' zeby zobaczyc spis \n Wcisnij 'w' zeby wypozyczyc \n Wcisinij 'u' zeby usunac");
+            Scanner scanner = new Scanner(System.in);
+            String userInput = scanner.next();
+            if (userInput.equals("d")) {
+                Akcje.dodajKsiazke();
+            }
+            if (userInput.equals("s")) {
+                Akcje.podajSpis();
+            }
+            if (userInput.equals("w")) {
+                Akcje.wypozycz();
 
-        do{
-            System.out.println("Co chcesz zrobic? \n Wcisnij 'd' zeby dodac ksiazke \n Wcisnij 's' zeby zobaczyc spis \n Wcisnij 'w' zeby wypozyczyc");
-        Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.next();
-        if (userInput.equals("d")) {
-           Akcje.dodajKsiazke();
-        }
-        if (userInput.equals("s")) {
-            Akcje.podajSpis(); 
-        }
-        if(userInput.equals("w")){
-            Akcje.wypozycz();
-
-        }
-        if(userInput.equals("q")){
-            zakoncz = 1;
-        }
-        if(userInput.equals("u")){
-            Akcje.usun();
-        }
-    }while(zakoncz==0);
-}
+            }
+            if (userInput.equals("q")) {
+                zakoncz = 1;
+            }
+            if (userInput.equals("u")) {
+                Akcje.usun();
+            }
+            if(userInput.equals("a")){
+                Akcje.autorAlfabetycznie();
+            }
+            if(userInput.equals("t")){
+                Akcje.tytulAlfabetycznie();
+            }
+            if(userInput.equals("z")){
+                Akcje.znajdzTytul();
+            }
+        } while (zakoncz == 0);
+        dupa.nowaMetoda();
+    }
 }
